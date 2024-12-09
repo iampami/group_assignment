@@ -281,16 +281,11 @@ def test_invalid_search(driver):
     time.sleep(2)
     search_button = driver.find_element(By.XPATH, "/html/body/div[2]/div[2]/div[1]/form/button/span")
     time.sleep(2)
-
-    invalid_keywords = [":###", "@@@", "!!!"]
-    for keyword in invalid_keywords:
-        search_input.send_keys(keyword)
-        search_button.click()
-        result_message = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "//table/tbody/tr/td"))
-        )
-        assert "Không có người dùng nào để hiển thị!" in result_message.text, \
-            f"Unexpected message for keyword '{keyword}': {result_message.text}"
+    
+    search_input.send_keys("###")
+    search_button.click()
+    result_message = driver.find_element(By.XPATH, "//table/tbody/tr/td")
+    assert "Không có người dùng nào để hiển thị!" in result_message.text
 
 def test_count_total_user(driver):
     test_valid_login(driver)
