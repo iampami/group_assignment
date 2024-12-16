@@ -81,6 +81,9 @@ def test_add_customer(driver):
     except NoAlertPresentException:
         assert False, "Expected alert not present."
 
+    existing_user = driver.find_element(By.XPATH, "/html/body/div[2]/div[2]/table/tbody/tr[1]/td[2]")
+    assert existing_user.is_displayed(), customer_info1[1]
+
 def test_not_fill_customer_info(driver):
 
     test_valid_login(driver)
