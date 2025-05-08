@@ -27,7 +27,7 @@ pytest test_file.py
 
 -To get even more detailed output, use the -v flag:
 ```bash
-pytest test_file.py
+pytest -v test_file.py
 ```
 -For a more visual representation of the test results, you can generate HTML reports using the pytest-html plugin.
 ### 1. Install pytest-html
